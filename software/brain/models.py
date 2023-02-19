@@ -14,8 +14,8 @@ class Encoder(nn.Module):
         super(Encoder, self).__init__()
         self.enc_image_size = encoded_image_size
 
-        resnet = torchvision.models.resnet101(pretrained=True)  # pretrained ImageNet ResNet-101
-
+        #resnet = torchvision.models.resnet101(pretrained=True)  # pretrained ImageNet ResNet-101
+        resnet = torchvision.models.mobilenet_v3_small(pretrained=True)
         # Remove linear and pool layers (since we're not doing classification)
         modules = list(resnet.children())[:-2]
         self.resnet = nn.Sequential(*modules)
@@ -91,7 +91,7 @@ class DecoderWithAttention(nn.Module):
     Decoder.
     """
 
-    def __init__(self, attention_dim, embed_dim, decoder_dim, vocab_size, encoder_dim=2048, dropout=0.5):
+    def __init__(self, attention_dim, embed_dim, decoder_dim, vocab_size, encoder_dim=576, dropout=0.5):
         """
         :param attention_dim: size of attention network
         :param embed_dim: embedding size
