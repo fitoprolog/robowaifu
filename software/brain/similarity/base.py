@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer, util
 
 model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
 
-sentence1 = "RFX13SSAS"
+sentence1 = "cerca de la casa habia un perro"
 
 while True:
   sentence2= input(">")
